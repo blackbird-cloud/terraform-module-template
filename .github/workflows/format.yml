@@ -1,0 +1,31 @@
+name: Format
+on:
+  pull_request_target:
+    types: [opened, synchronize]
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    container: blackbird-cloud/terraform-toolkit:latest
+    steps:
+      - uses: actions/checkout@v2
+        if: github.event.pull_request.state == 'open'
+        name: Privileged Checkout
+        with:
+          token: ${{ secrets.PUBLIC_REPO_ACCESS_TOKEN }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Validate and Format
+        if: github.event.pull_request.state == 'open'
+        shell: sh
+        env:
+          GITHUB_TOKEN: "${{ secrets.PUBLIC_REPO_ACCESS_TOKEN }}"
+        run:
+          - terraform init -backend=false
+          - terraform validate
+          - terraform fmt
+
+      - uses: EndBug/add-and-commit@v9
+        with:
+          default_author: github_actions
