@@ -21,10 +21,10 @@ jobs:
         shell: sh
         env:
           GITHUB_TOKEN: "${{ secrets.PUBLIC_REPO_ACCESS_TOKEN }}"
-        run:
-          - terraform init -backend=false
-          - terraform validate
-          - terraform fmt
+        run: |
+          terraform init -backend=false
+          terraform validate
+          terraform fmt
 
       - uses: EndBug/add-and-commit@v9
         with:
