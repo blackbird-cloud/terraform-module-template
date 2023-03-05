@@ -14,6 +14,8 @@ jobs:
         name: Checkout
 
       - name: Validate and Format
+        env:
+          TFENV_TERRAFORM_VERSION: latest-allowed
         # if: github.event.pull_request.state == 'open'
         run: |
           terraform init -backend=false
