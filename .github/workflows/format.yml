@@ -1,29 +1,31 @@
 name: Validate and Format
-on: push
-# on:
-#   pull_request_target:
-#     types: [opened, synchronize]
+# on: push
+on:
+  pull_request_target:
+    types: [opened, synchronize]
 
 jobs:
   format:
+    if: github.event.pull_request.state == 'open'
     runs-on: ubuntu-latest
     container: blackbirdcloud/terraform-toolkit:latest
     steps:
-      - uses: actions/checkout@v3
-        if: github.event.pull_request.state == 'open'
-        name: Checkout
-      - run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure git
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
       - name: Validate and Format
         env:
           TFENV_TERRAFORM_VERSION: latest-allowed
-        if: github.event.pull_request.state == 'open'
         run: |
           terraform init -backend=false
           terraform validate
           terraform fmt
 
-      - uses: EndBug/add-and-commit@v9
-        name: Commit and push
+      - name: Commit and push
+        uses: EndBug/add-and-commit@v9
         with:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
