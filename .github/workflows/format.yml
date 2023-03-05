@@ -12,3 +12,17 @@ jobs:
       - uses: actions/checkout@v3
         if: github.event.pull_request.state == 'open'
         name: Checkout
+
+      - name: Validate and Format
+        if: github.event.pull_request.state == 'open'
+        env:
+          GITHUB_TOKEN: "${{ secrets.PUBLIC_REPO_ACCESS_TOKEN }}"
+        run: |
+          terraform init -backend=false
+          terraform validate
+          terraform fmt
+
+      - uses: EndBug/add-and-commit@v9
+        name: Commit and push
+        with:
+          default_author: github_actions
