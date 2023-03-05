@@ -10,13 +10,11 @@ jobs:
     container: blackbirdcloud/terraform-toolkit:latest
     steps:
       - uses: actions/checkout@v3
-        if: github.event.pull_request.state == 'open'
+        # if: github.event.pull_request.state == 'open'
         name: Checkout
 
       - name: Validate and Format
-        if: github.event.pull_request.state == 'open'
-        env:
-          GITHUB_TOKEN: "${{ secrets.PUBLIC_REPO_ACCESS_TOKEN }}"
+        # if: github.event.pull_request.state == 'open'
         run: |
           terraform init -backend=false
           terraform validate
