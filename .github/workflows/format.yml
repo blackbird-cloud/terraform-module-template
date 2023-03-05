@@ -12,13 +12,13 @@ jobs:
         if: github.event.pull_request.state == 'open'
         name: Checkout
 
-      - name: Validate and Format
-        if: github.event.pull_request.state == 'open'
-        run: |
-          terraform init -backend=false
-          terraform validate
-          terraform fmt
+      # - name: Validate and Format
+      #   if: github.event.pull_request.state == 'open'
+      #   run: |
+      #     terraform init -backend=false
+      #     terraform validate
+      #     terraform fmt
 
-      - uses: EndBug/add-and-commit@v9
-        with:
-          default_author: github_actions
+      # - uses: EndBug/add-and-commit@v9
+      #   with:
+      #     default_author: github_actions
