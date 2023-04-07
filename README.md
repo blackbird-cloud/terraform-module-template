@@ -1,5 +1,5 @@
 <!-- BEGIN_TF_DOCS -->
-[![blackbird-logo](https://blackbird.cloud/images/logo_simple.png)](https://blackbird.cloud)
+[![blackbird-logo](https://raw.githubusercontent.com/blackbird-cloud/terraform-module-template/main/.config/logo_simple.png)](https://blackbird.cloud)
 
 ## Requirements
 
