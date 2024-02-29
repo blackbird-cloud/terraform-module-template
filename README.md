@@ -1,4 +1,3 @@
-<!-- BEGIN_TF_DOCS -->
 # <Cloud> <Main resource> Terraform module
 A Terraform module which configures your <Cloud> <Main resource>. <Relevant docs>
 [![blackbird-logo](https://raw.githubusercontent.com/blackbird-cloud/terraform-module-template/main/.config/logo_simple.png)](https://www.blackbird.cloud)
@@ -39,4 +38,3 @@ Checkout our other :point\_right: [terraform modules](https://registry.terraform
 ## Copyright
 
 Copyright © 2017-2023 [Blackbird Cloud](https://www.blackbird.cloud)
-<!-- END_TF_DOCS -->
