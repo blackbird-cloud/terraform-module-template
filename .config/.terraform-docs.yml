@@ -14,8 +14,8 @@ sections:
     - modules
 
 content: |-
-  # <Cloud> <Main resource> Terraform module
-  A Terraform module which configures your <Cloud> <Main resource>. <Relevant docs>
+  {{ include "./.config/title.md"}}
+
   {{ .Header }}
 
   ## Example
