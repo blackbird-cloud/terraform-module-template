@@ -1,3 +1,4 @@
+<!-- BEGIN_TF_DOCS -->
 # Terraform module template
 Terraform module template to create reusable terraform modules.
 
@@ -38,4 +39,5 @@ Checkout our other :point\_right: [terraform modules](https://registry.terraform
 
 ## Copyright
 
-Copyright © 2017-2025 [Blackbird Cloud](https://blackbird.cloud)
+Copyright © 2017-2026 [Blackbird Cloud](https://blackbird.cloud)
+<!-- END_TF_DOCS -->
