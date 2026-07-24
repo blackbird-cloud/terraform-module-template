@@ -42,3 +42,5 @@ terraform.rc
 *.iml
 .DS_Store
 
+# Terraform lock files (not used by module consumers)
+.terraform.lock.hcl
